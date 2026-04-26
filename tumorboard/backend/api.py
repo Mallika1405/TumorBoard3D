@@ -78,7 +78,7 @@ async def analyze_mri(file: UploadFile = File(...)):
 
     try:
         response = gemini.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=[
                 types.Part.from_bytes(data=base64.standard_b64decode(b64), mime_type=mime),
                 types.Part.from_text(text="""You are an expert neuroradiologist analyzing a brain MRI or CT scan.
@@ -115,7 +115,7 @@ async def parse_pdf(file: UploadFile = File(...)):
 
     try:
         response = gemini.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=f"""Extract tumor information from this radiology report and return ONLY valid JSON:
 {{
   "volume_cc": <number or null>,
@@ -161,7 +161,7 @@ Tumor Board Results:
         history_text = "\n".join([f"{h['role'].upper()}: {h['content']}" for h in msg.history[-4:]])
         prompt = f"{system}\n\n{history_text}\n\nPATIENT: {msg.message}\n\nASSISTANT:"
         response = gemini.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=prompt
         )
         return {"response": response.text.strip()}
