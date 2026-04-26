@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Consilium AI — premium clinical dark theme.
+       All colors HSL. Designed to feel like a $10k/mo enterprise tool. */
+    --background: 220 50% 3%;
+    --foreground: 210 30% 92%;
+
+    --card: 220 45% 5%;
+    --card-foreground: 210 30% 92%;
+
+    --popover: 220 50% 4%;
+    --popover-foreground: 210 30% 92%;
+
+    --primary: 0 72% 51%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 0 85% 62%;
+
+    --secondary: 217 40% 10%;
+    --secondary-foreground: 210 30% 92%;
+
+    --muted: 220 35% 8%;
+    --muted-foreground: 215 25% 45%;
+
+    --accent: 199 80% 60%;
+    --accent-foreground: 220 50% 3%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 35% 11%;
+    --input: 220 35% 9%;
+    --ring: 0 72% 51%;
+
+    --radius: 0.75rem;
+
+    /* Specialist tones */
+    --radiology: 213 94% 78%;
+    --oncology: 270 90% 80%;
+    --surgery: 0 90% 78%;
+    --radiation: 43 96% 65%;
+    --trials: 158 70% 65%;
+    --coordinator: 187 85% 70%;
+
+    /* Surfaces & gradients */
+    --surface-1: 220 45% 5%;
+    --surface-2: 220 40% 7%;
+    --surface-3: 220 38% 9%;
+    --hairline: 220 30% 14%;
+
+    --gradient-hero: radial-gradient(ellipse 80% 60% at 50% 0%, hsl(0 72% 51% / 0.18), transparent 60%),
+                     radial-gradient(ellipse 60% 50% at 80% 100%, hsl(199 80% 60% / 0.10), transparent 60%),
+                     linear-gradient(180deg, hsl(220 50% 3%), hsl(220 55% 2%));
+    --gradient-crimson: linear-gradient(135deg, hsl(0 72% 51%), hsl(15 85% 55%));
+    --gradient-glass: linear-gradient(180deg, hsl(220 40% 8% / 0.7), hsl(220 45% 5% / 0.5));
+    --gradient-text: linear-gradient(180deg, hsl(210 30% 98%), hsl(210 25% 70%));
+
+    /* Shadows */
+    --shadow-glow: 0 0 60px hsl(0 72% 51% / 0.25);
+    --shadow-soft: 0 20px 60px -20px hsl(0 0% 0% / 0.6);
+    --shadow-elev: 0 30px 80px -30px hsl(0 0% 0% / 0.8), 0 0 0 1px hsl(220 35% 11%);
+
+    --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --sidebar-background: 220 50% 3%;
+    --sidebar-foreground: 210 30% 92%;
+    --sidebar-primary: 0 72% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 35% 8%;
+    --sidebar-accent-foreground: 210 30% 92%;
+    --sidebar-border: 220 35% 11%;
+    --sidebar-ring: 0 72% 51%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html, body, #root { height: 100%; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'IBM Plex Mono', monospace;
+    font-feature-settings: "ss01", "cv11";
+    background: var(--gradient-hero);
+    background-attachment: fixed;
+  }
+  ::selection { background: hsl(var(--primary) / 0.3); color: hsl(var(--foreground)); }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--hairline)); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(220 30% 20%); }
+}
+
+@layer components {
+  .font-serif { font-family: 'Instrument Serif', Georgia, serif; }
+  .font-sans { font-family: 'Inter', system-ui, sans-serif; }
+  .font-mono { font-family: 'IBM Plex Mono', monospace; }
+
+  .text-gradient {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glass {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--hairline));
+  }
+
+  .surface-1 { background: hsl(var(--surface-1)); }
+  .surface-2 { background: hsl(var(--surface-2)); }
+  .surface-3 { background: hsl(var(--surface-3)); }
+  .hairline { border-color: hsl(var(--hairline)); }
+
+  .glow-primary { box-shadow: var(--shadow-glow); }
+  .shadow-elev { box-shadow: var(--shadow-elev); }
+
+  .label-eyebrow {
+    @apply text-[10px] uppercase tracking-[0.2em] text-muted-foreground;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(hsl(var(--hairline) / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--hairline) / 0.4) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+  }
+
+  .noise::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  .pulse-dot {
+    @apply relative inline-block w-1.5 h-1.5 rounded-full;
+    background: hsl(var(--primary));
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.6);
+    animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  }
+}
+
+@layer utilities {
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0.5); }
+    70% { box-shadow: 0 0 0 10px hsl(var(--primary) / 0); }
+    100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0); }
+  }
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  .animate-float { animation: float-slow 6s ease-in-out infinite; }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .shimmer {
+    background: linear-gradient(90deg, transparent, hsl(var(--foreground) / 0.08), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+}
