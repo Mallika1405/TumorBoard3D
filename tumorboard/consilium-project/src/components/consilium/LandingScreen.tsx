@@ -44,7 +44,7 @@ export function LandingScreen({ onStart }: { onStart: () => void }) {
           transition={{ duration: 1, delay: 0.1 }}
           className="font-serif text-6xl md:text-8xl leading-[0.95] tracking-tight max-w-5xl"
         >
-          A tumor board that{" "}
+          A board that{" "}
           <span className="italic text-gradient">convenes in seconds,</span>
           <br />
           not <span className="italic">weeks.</span>

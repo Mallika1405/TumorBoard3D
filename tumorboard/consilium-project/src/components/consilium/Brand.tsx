@@ -8,7 +8,7 @@ export function Brand({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
       </div>
       <span className={`font-serif italic ${scale} tracking-tight text-foreground leading-none`}>
         Consilium
-        <span className={`not-italic font-mono ${tag} ml-1.5 text-primary tracking-widest`}>AI</span>
+        <span className={`not-italic font-mono ${tag} ml-1.5 text-primary tracking-widest`}></span>
       </span>
     </div>
   );
